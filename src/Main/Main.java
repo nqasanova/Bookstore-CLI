@@ -476,6 +476,84 @@ public class Main {
         }
     }
 
+    public static void orderInformationMenu() {
+        System.out.println("""
+            ordersInfo table
+            1.Insert new order information
+            2.Retrieve all order information
+            3.Get all order information by order_id
+            4.Update order information
+            5.Delete order information
+            6.Back to choices menu
+                        """);
+        System.out.print("Choose what to do: ");
+        int choice = sc.nextInt();
+        sc.nextLine();
+        switch (choice) {
+            case 1 -> {
+                System.out.print("order_id: ");
+                int order_id = sc.nextInt();
+                System.out.print("book_id: ");
+                int book_id = sc.nextInt();
+                System.out.print("Ordered books: ");
+                int ordered_books = sc.nextInt();
+                OrdersInfo_Method.addOrderInformation(new OrdersInfo(order_id, book_id, ordered_books));
+                orderInformationMenu();
+            }
+            case 2 -> {
+                List<OrdersInfo> OrderInformation = OrdersInfo_Method.getAllOrderInformation();
+                if (OrderInformation.size() == 0) {
+                    System.out.println("No record found");
+                }
+                orderInformationMenu();
+            }
+            case 3 -> {
+                System.out.print("Enter the id of the order you want to get: ");
+                int order_id = sc.nextInt();
+                List<OrdersInfo> orderInformation = OrdersInfo_Method.getAllOrderInformationById(order_id);
+                if (orderInformation.size() == 0) {
+                    System.out.println("No order information found");
+                }
+                orderInformationMenu();
+            }
+            case 4 -> {
+                System.out.print("Enter the id of the order you want to update: ");
+                int order_id = sc.nextInt();
+                System.out.print("Enter the id of the book you want to update: ");
+                int book_id = sc.nextInt();
+                OrdersInfo ordersInfo = OrdersInfo_Method.getOrderInformationByOrderIdAndBookId(order_id, book_id);
+                if (ordersInfo == null) {
+                    System.out.println("No order information found");
+                    orderInformationMenu();
+                }
+                System.out.println("Enter new values to fields you want to update");
+                System.out.print("New book_id: ");
+                int update_book_id = sc.nextInt();
+                ordersInfo.setBook_id(update_book_id);
+                System.out.println("New Ordered books Quantity: ");
+                int ordered_books = sc.nextInt();
+                ordersInfo.setOrdered_books(ordered_books);
+                OrdersInfo_Method.updateOrderInformation(ordersInfo);
+                orderInformationMenu();
+            }
+            case 5 -> {
+                System.out.print("Enter the id of order you want to delete: ");
+                int order_id = sc.nextInt();
+                System.out.print("Enter the id of book you want to delete: ");
+                int book_id = sc.nextInt();
+                OrdersInfo orderInformation = OrdersInfo_Method.getOrderInformationByOrderIdAndBookId(order_id, book_id);
+                if (orderInformation == null) {
+                    System.out.println("No order information found");
+                    orderInformationMenu();
+                }
+                OrdersInfo_Method.deleteOrderInformation(order_id, book_id);
+                orderInformationMenu();
+            }
+            case 6 -> mainMenu();
+            default -> System.out.println("Invalid option! Please select a valid option.");
+        }
+    }
+
     public static void exitApplication() {
         System.out.println("Exiting application...");
         System.exit(0);
