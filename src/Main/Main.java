@@ -78,6 +78,99 @@ public class Main {
         }
     }
 
+    public static void bookMenu() {
+        System.out.println("""
+            Books table
+            1.Insert new book
+            2.Retrieve all books
+            3.Get book by book_id
+            4.Update book
+            5.Delete book
+            6.Get All book information
+            7.Back to choices menu
+                        """);
+        System.out.print("Choose what to do: ");
+        int choice = sc.nextInt();
+        sc.nextLine();
+        switch (choice) {
+            case 1 -> {
+                System.out.print("Book_id: ");
+                int book_id = sc.nextInt();
+                sc.nextLine();
+                System.out.print("Title: ");
+                String title = sc.nextLine();
+                System.out.print("Genre: ");
+                String genre = sc.nextLine();
+                System.out.print("Price: ");
+                int price = sc.nextInt();
+                System.out.print("Stock: ");
+                int stock = sc.nextInt();
+                Books book = new Books(book_id, title, genre, price, stock);
+                Books_Method.addBooks(book);
+                bookMenu();
+            }
+            case 2 -> {
+                List<Books> books = Books_Method.getAllBooks();
+                if (books.size() == 0) {
+                    System.out.println("No record found");
+                }
+                bookMenu();
+            }
+            case 3 -> {
+                System.out.print("Enter the id of the book you want to get: ");
+                int book_id = sc.nextInt();
+                Books books = Books_Method.getBookById(book_id);
+                bookMenu();
+            }
+            case 4 -> {
+                System.out.print("Enter the id of the book you want to update: ");
+                int book_id = sc.nextInt();
+                sc.nextLine();
+                Books book = Books_Method.getBookById(book_id);
+                if (book == null) {
+                    bookMenu();
+                }
+
+                System.out.println("Enter new values to fields you want to update");
+                System.out.print("New title: ");
+                String title = sc.nextLine();
+                System.out.print("New genre: ");
+                String genre = sc.nextLine();
+                System.out.print("New price: ");
+                int price = sc.nextInt();
+                System.out.print("New stock: ");
+                int stock = sc.nextInt();
+
+                book.setTitle(title);
+                book.setGenre(genre);
+                book.setPrice(price);
+                book.setStock(stock);
+
+                Books_Method.updateBooks(book);
+                bookMenu();
+            }
+            case 5 -> {
+                System.out.print("Enter the id of book you want to delete: ");
+                int book_id = sc.nextInt();
+                Books book = Books_Method.getBookById(book_id);
+                if (book == null) {
+                    bookMenu();
+                }
+                Books_Method.deleteBooks(book_id);
+                bookMenu();
+            }
+            case 6 -> {
+                List<Books> books = Books_Method.getAllBookInformation();
+                if (books.size() == 0) {
+                    System.out.println("No records found");
+                }
+                bookMenu();
+            }
+            case 7 -> mainMenu();
+            default -> System.out.println("Invalid option! Please select a valid option.");
+        }
+    }
+
     public static void authorMenu() {
         System.out.println("""
             Authors table
