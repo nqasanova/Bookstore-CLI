@@ -404,6 +404,78 @@ public class Main {
         }
     }
 
+    public static void bookInformationMenu() {
+        System.out.println("""
+            booksInfo table
+            1.Insert new book information
+            2.Retrieve all book information
+            3.Get all book information by book_id
+            4.Update book information
+            5.Delete book information
+            6.Back to choices menu
+                        """);
+        System.out.print("Choose what to do: ");
+        int choice = sc.nextInt();
+        switch (choice) {
+            case 1 -> {
+                System.out.print("book_id: ");
+                int book_id = sc.nextInt();
+                System.out.print("author_id: ");
+                int author_id = sc.nextInt();
+                BooksInfo_Method.addBooksInformation(new BooksInfo(book_id, author_id));
+                bookInformationMenu();
+            }
+            case 2 -> {
+                List<BooksInfo> BooksInformation = BooksInfo_Method.getAllBooksInformation();
+                if (BooksInformation.size() == 0) {
+                    System.out.println("No record found");
+                }
+                bookInformationMenu();
+            }
+            case 3 -> {
+                System.out.print("Enter the id of the book you want to get: ");
+                int book_id = sc.nextInt();
+                List<BooksInfo> booksInformation = BooksInfo_Method.getAllBooksInformationById(book_id);
+                if (booksInformation.size() == 0) {
+                    System.out.println("No book information found");
+                }
+                bookInformationMenu();
+            }
+            case 4 -> {
+                System.out.print("Enter the id of the book you want to update: ");
+                int book_id = sc.nextInt();
+                System.out.print("Enter the id of the author you want to update: ");
+                int author_id = sc.nextInt();
+                BooksInfo booksInformation = BooksInfo_Method.getBooksInformationById(book_id, author_id);
+                if (booksInformation == null) {
+                    System.out.println("No book information found");
+                    bookInformationMenu();
+                }
+                System.out.println("Enter new values to fields you want to update");
+                System.out.print("New author_id: ");
+                int update_author_id = sc.nextInt();
+                booksInformation.setAuthor_id(update_author_id);
+                BooksInfo_Method.updateBooksInformation(booksInformation);
+                bookInformationMenu();
+            }
+            case 5 -> {
+                System.out.print("Enter the id of book you want to delete: ");
+                int book_id = sc.nextInt();
+                System.out.print("Enter the id of author you want to delete: ");
+                int author_id = sc.nextInt();
+                BooksInfo booksInformation = BooksInfo_Method.getBooksInformationById(book_id, author_id);
+                if (booksInformation == null) {
+                    System.out.println("No book information found");
+                    bookInformationMenu();
+                }
+                BooksInfo_Method.deleteBooksInformation(book_id, author_id);
+                bookInformationMenu();
+            }
+            case 6 -> mainMenu();
+            default -> System.out.println("Invalid option! Please select a valid option.");
+        }
+    }
+
     public static void exitApplication() {
         System.out.println("Exiting application...");
         System.exit(0);
