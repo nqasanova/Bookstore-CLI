@@ -321,6 +321,89 @@ public class Main {
         }
     }
 
+    public static void orderMenu() {
+        System.out.println("""
+            Orders table
+            1.Insert new order
+            2.Retrieve all orders
+            3.Get order by order_id
+            4.Update order
+            5.Delete order
+            6.Back to choices menu
+                        """);
+        System.out.print("Choose what to do: ");
+        int choice = sc.nextInt();
+        switch (choice) {
+            case 1 -> {
+                System.out.print("order_id: ");
+                int order_id = sc.nextInt();
+                System.out.print("customer_id: ");
+                int customer_id = sc.nextInt();
+                sc.nextLine();
+                System.out.print("order date: ");
+                String date = sc.nextLine();
+                Date dateStr = Date.valueOf(date);
+                System.out.print("total price: ");
+                int price = sc.nextInt();
+                Orders_Method.addOrders(new Orders(order_id, customer_id, dateStr, price));
+                orderMenu();
+            }
+            case 2 -> {
+                List<Orders> Orders = Orders_Method.getAllOrders();
+                if (Orders.size() == 0) {
+                    System.out.println("No record found");
+                }
+                orderMenu();
+            }
+            case 3 -> {
+                System.out.print("Enter the id of the order you want to get: ");
+                int order_id = sc.nextInt();
+                Orders order = Orders_Method.getOrderById(order_id);
+                if (order == null) {
+                    System.out.println("No order found");
+                }
+                orderMenu();
+            }
+            case 4 -> {
+                System.out.print("Enter the id of the order you want to update: ");
+                int customer_id = sc.nextInt();
+                sc.nextLine();
+                Orders order = Orders_Method.getOrderById(customer_id);
+                if (order == null) {
+                    System.out.println("No order found");
+                    orderMenu();
+                }
+                System.out.println("Enter new values to fields you want to update");
+                System.out.print("New customer_id: ");
+                int update_customer_id = sc.nextInt();
+                sc.nextLine();
+                System.out.print("New date: ");
+                String date = sc.nextLine();
+                Date update_dateStr = Date.valueOf(date);
+                System.out.print("New total price: ");
+                int total_price = sc.nextInt();
+                order.setCustomer_id(update_customer_id);
+                order.setOrder_date(update_dateStr);
+                order.setTotal_price(total_price);
+                Orders_Method.updateOrders(order);
+                orderMenu();
+            }
+            case 5 -> {
+                System.out.print("Enter the id of order you want to delete: ");
+                int order_id = sc.nextInt();
+                Orders orders = Orders_Method.getOrderById(order_id);
+                if (orders == null) {
+                    System.out.println("No order found");
+                    orderMenu();
+                }
+                Orders_Method.deleteOrders(order_id);
+                orderMenu();
+            }
+            case 6 -> mainMenu();
+            default -> System.out.println("Invalid option! Please select a valid option.");
+        }
+    }
+
     public static void exitApplication() {
         System.out.println("Exiting application...");
         System.exit(0);
