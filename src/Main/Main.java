@@ -241,6 +241,86 @@ public class Main {
         }
     }
 
+    public static void customerMenu() {
+        System.out.println("""
+            Customers table
+            1.Insert new customer
+            2.Retrieve all customers
+            3.Get customer by customer_id
+            4.Update customer
+            5.Delete customer
+            6.Back to choices menu
+                        """);
+        System.out.print("Choose what to do: ");
+        int choice = sc.nextInt();
+        switch (choice) {
+            case 1 -> {
+                System.out.print("customer_id: ");
+                int customer_id = sc.nextInt();
+                sc.nextLine();
+                System.out.print("customer_name: ");
+                String customer_name = sc.nextLine();
+                System.out.print("customer address: ");
+                String address = sc.nextLine();
+                System.out.print("customer email: ");
+                String email = sc.nextLine();
+                Customer_Method.addCustomer(new Customer(customer_id, customer_name, email, address));
+                customerMenu();
+            }
+            case 2 -> {
+                List<Customer> Customer = Customer_Method.getAllCustomer();
+                if (Customer.size() == 0) {
+                    System.out.println("No record found");
+                }
+                customerMenu();
+            }
+            case 3 -> {
+                System.out.print("Enter the id of the customer you want to get: ");
+                int customer_id = sc.nextInt();
+                Customer customer = Customer_Method.getCustomerById(customer_id);
+                if (customer == null) {
+                    System.out.println("No customer found");
+                }
+                customerMenu();
+            }
+            case 4 -> {
+                System.out.print("Enter the id of the customer you want to update: ");
+                int customer_id = sc.nextInt();
+                sc.nextLine();
+                Customer customer = Customer_Method.getCustomerById(customer_id);
+                if (customer == null) {
+                    System.out.println("No customer found");
+                    customerMenu();
+                }
+                System.out.println("Enter new values to fields you want to update");
+                System.out.print("New customer_name: ");
+                String customer_name = sc.nextLine();
+                System.out.print("New email: ");
+                String email = sc.nextLine();
+                System.out.print("New address: ");
+                String address = sc.nextLine();
+                customer.setCustomer_name(customer_name);
+                customer.setEmail(email);
+                customer.setAddress(address);
+                Customer_Method.updateCustomer(customer);
+                customerMenu();
+            }
+            case 5 -> {
+                System.out.print("Enter the id of customer you want to delete: ");
+                int customer_id = sc.nextInt();
+                Customer customer = Customer_Method.getCustomerById(customer_id);
+                if (customer == null) {
+                    System.out.println("No customer found");
+                    customerMenu();
+                }
+                Customer_Method.deleteCustomer(customer_id);
+                customerMenu();
+            }
+            case 6 -> mainMenu();
+            default -> System.out.println("Invalid option! Please select a valid option.");
+        }
+    }
+
     public static void exitApplication() {
         System.out.println("Exiting application...");
         System.exit(0);
