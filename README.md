@@ -14,7 +14,6 @@ This Java application demonstrates a comprehensive implementation of a bookstore
     - [Run the Application](#6-run-the-application)
 - [Features](#features)
 - [Troubleshooting](#troubleshooting)
-- [License](#license)
 
 ## Installation
 
