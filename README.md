@@ -13,23 +13,25 @@ This Java application demonstrates a comprehensive implementation of a bookstore
     - [Add PostgreSQL Driver](#5-add-postgresql-driver)
     - [Run the Application](#6-run-the-application)
 - [Features](#features)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
 
 ## Installation
 
 ### 1. Clone the Repository
-   - Clone the repository to your local machine: git clone https://github.com/nqasanova/Bookstore-CLI
+   - Clone the repository to your local machine: `git clone https://github.com/nqasanova/Bookstore-CLI`
 
 ### 2. Open Project in Java IDE
    - Open the project in any Java-compatible IDE such as VS Code, IntelliJ, NetBeans, Eclipse, or BlueJ.
 
 ### 3. Create PostgreSQL Database
-   - Using pgAdmin, execute SQL scripts located in `src -> SQL_Scripts`.
+   - Using pgAdmin or any other PostgreSQL administration tool, execute SQL scripts located in `src -> SQL_Scripts`.
    - Copy and paste the scripts into the Query tool and run them.
 
 ## Usage
 
 ### 4. Configure Database Connection
-   - Navigate to `src -> Connectivity -> Database_connection` in the project.
+   - Navigate to `src -> Connectivity -> Database_Connection` in the project.
    - Fill out the connection details:
       ```java
       String url = "jdbc:postgresql://host_name:port_number/database_name";
@@ -60,3 +62,13 @@ Upon running the application, the main menu will be displayed, presenting a list
 9. Retrieve Primary keys
 10. Retrieve Foreign keys
 11. Exit from the application
+
+## Troubleshooting
+
+If you encounter any issues during installation or usage, you can refer to the following troubleshooting tips:
+
+- **Issue**: Unable to connect to the database.
+  - **Solution**: Double-check the database connection details provided in the configuration. Ensure that the PostgreSQL server is running and accessible from your environment.
+
+- **Issue**: SQL scripts fail to execute.
+  - **Solution**: Make sure you have the necessary permissions to create and modify databases. Check for any syntax errors in the SQL scripts.
