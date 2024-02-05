@@ -138,21 +138,22 @@ public class Books_Method extends Database_Connection {
                 int author_id = res.getInt("author_id");
                 int ordered_books = res.getInt("ordered_books");
 
-                System.out.println("customer_id = " + customer_id + ", " +
-                        "order_id = " + order_id + ", " +
-                        "book_id = " + book_id + ", " +
-                        "author_id = " + author_id + ", " +
-                        "title = " + title + ", " +
-                        "genre = " + genre + ", " +
-                        "price = " + price + ", " +
-                        "stock = " + stock + ", " +
-                        "author_name = " + author_name +
-                        "ordered_books = " + ordered_books + ", " +
-                        "order_date = " + order_date + ", " +
-                        "total_price = " + total_price +
-                        "address = " + address + ", " +
-                        "email = " + email +  ", " +
+                System.out.println("customer_id = " + customer_id + ", " + "\n" +
+                        "order_id = " + order_id + ", " + "\n" +
+                        "book_id = " + book_id + ", " + "\n" +
+                        "author_id = " + author_id + ", " + "\n" +
+                        "title = " + title + ", " + "\n" +
+                        "genre = " + genre + ", " + "\n" +
+                        "price = " + price + ", " + "\n" +
+                        "stock = " + stock + ", " + "\n" +
+                        "author_name = " + author_name + "\n" +
+                        "ordered_books = " + ordered_books + ", " + "\n" +
+                        "order_date = " + order_date + ", " + "\n" +
+                        "total_price = " + total_price + "\n" +
+                        "address = " + address + ", " + "\n" +
+                        "email = " + email +  ", " + "\n" +
                         "customer_name = " + customer_name);
+
                 Authors author = new Authors(author_id,author_name);
                 Customer customer = new Customer(customer_id,customer_name,address,email);
                 Orders order = new Orders(order_id,customer_id,order_date,total_price);

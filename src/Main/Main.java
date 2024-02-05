@@ -17,21 +17,24 @@ public class Main {
     }
 
     public static void mainMenu() {
+        System.out.println("---------------------------------------");
         System.out.println("Main Menu");
+        System.out.println("---------------------------------------");
+        System.out.println("Select a table to perform actions on:");
         while (true) {
             System.out.println("""
-                    Select table to perform actions
-                    1.books table
-                    2.authors table
-                    3.customers table
-                    4.orders table
-                    5.booksInfo table
-                    6.ordersInfo table
-                    7.Retrieve All Table names and Columns
-                    8.Retrieve Column data types
-                    9.Retrieve Primary keys
-                    10.Retrieve Foreign keys
-                    11.Exit from application""");
+                    1. Books Table
+                    2. Authors Table
+                    3. Customers Table
+                    4. Orders Table
+                    5. BooksInfo Table
+                    6. OrdersInfo Table
+                    7. Retrieve All Table Names and Columns
+                    8. Retrieve Column Data Types
+                    9. Retrieve Primary Keys
+                    10. Retrieve Foreign keys
+                    11. Exit from application""");
+            System.out.println("---------------------------------------");
             int option = sc.nextInt();
             switch (option) {
                 case 1 -> bookMenu();
@@ -79,15 +82,17 @@ public class Main {
     }
 
     public static void bookMenu() {
+        System.out.println("---------------------------------------");
+        System.out.println("Books Table");
+        System.out.println("---------------------------------------");
         System.out.println("""
-            Books table
-            1.Insert new book
-            2.Retrieve all books
-            3.Get book by book_id
-            4.Update book
-            5.Delete book
-            6.Get All book information
-            7.Back to choices menu
+            1. Insert new book
+            2. Retrieve all books
+            3. Get book by book_id
+            4. Update book
+            5. Delete book
+            6. Get All book information
+            7. Back to choices menu
                         """);
         System.out.print("Choose what to do: ");
         int choice = sc.nextInt();
@@ -172,14 +177,16 @@ public class Main {
     }
 
     public static void authorMenu() {
+        System.out.println("---------------------------------------");
+        System.out.println("Authors Table");
+        System.out.println("---------------------------------------");
         System.out.println("""
-            Authors table
-            1.Insert new author
-            2.Retrieve all authors
-            3.Get author by author_id
-            4.Update author
-            5.Delete author
-            6.Back to choices menu
+            1. Insert new author
+            2. Retrieve all authors
+            3. Get author by author_id
+            4. Update author
+            5. Delete author
+            6. Back to choices menu
                         """);
         System.out.print("Choose what to do: ");
         int choice = sc.nextInt();
@@ -242,14 +249,16 @@ public class Main {
     }
 
     public static void customerMenu() {
+        System.out.println("---------------------------------------");
+        System.out.println("Customers Table");
+        System.out.println("---------------------------------------");
         System.out.println("""
-            Customers table
-            1.Insert new customer
-            2.Retrieve all customers
-            3.Get customer by customer_id
-            4.Update customer
-            5.Delete customer
-            6.Back to choices menu
+            1. Insert new customer
+            2. Retrieve all customers
+            3. Get customer by customer_id
+            4. Update customer
+            5. Delete customer
+            6. Back to choices menu
                         """);
         System.out.print("Choose what to do: ");
         int choice = sc.nextInt();
@@ -322,14 +331,16 @@ public class Main {
     }
 
     public static void orderMenu() {
+        System.out.println("---------------------------------------");
+        System.out.println("Orders Table");
+        System.out.println("---------------------------------------");
         System.out.println("""
-            Orders table
-            1.Insert new order
-            2.Retrieve all orders
-            3.Get order by order_id
-            4.Update order
-            5.Delete order
-            6.Back to choices menu
+            1. Insert new order
+            2. Retrieve all orders
+            3. Get order by order_id
+            4. Update order
+            5. Delete order
+            6. Back to choices menu
                         """);
         System.out.print("Choose what to do: ");
         int choice = sc.nextInt();
@@ -405,14 +416,16 @@ public class Main {
     }
 
     public static void bookInformationMenu() {
+        System.out.println("---------------------------------------");
+        System.out.println("BooksInfo Table");
+        System.out.println("---------------------------------------");
         System.out.println("""
-            booksInfo table
-            1.Insert new book information
-            2.Retrieve all book information
-            3.Get all book information by book_id
-            4.Update book information
-            5.Delete book information
-            6.Back to choices menu
+            1. Insert new book information
+            2. Retrieve all book information
+            3. Get all book information by book_id
+            4. Update book information
+            5. Delete book information
+            6. Back to choices menu
                         """);
         System.out.print("Choose what to do: ");
         int choice = sc.nextInt();
@@ -477,14 +490,16 @@ public class Main {
     }
 
     public static void orderInformationMenu() {
+        System.out.println("---------------------------------------");
+        System.out.println("OrdersInfo Table");
+        System.out.println("---------------------------------------");
         System.out.println("""
-            ordersInfo table
-            1.Insert new order information
-            2.Retrieve all order information
-            3.Get all order information by order_id
-            4.Update order information
-            5.Delete order information
-            6.Back to choices menu
+            1. Insert new order information
+            2. Retrieve all order information
+            3. Get all order information by order_id
+            4. Update order information
+            5. Delete order information
+            6. Back to choices menu
                         """);
         System.out.print("Choose what to do: ");
         int choice = sc.nextInt();
