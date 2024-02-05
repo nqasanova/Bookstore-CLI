@@ -1,7 +1,7 @@
 # Bookstore-CLI
 
 ## Overview
-This Java application demonstrates a comprehensive implementation of a bookstore database, covering schema design, CRUD operations, transaction handling, and metadata access. The application is built to interact with a relational database, allowing users to manage books, authors, orders, and customers seamlessly.
+This Java application demonstrates a comprehensive implementation of a bookstore database, covering CRUD operations, transaction handling, and metadata access. The application is built to interact with a relational database, allowing users to manage books, authors, orders, and customers seamlessly.
 
 ## Table of Contents
  - [Installation](#installation)
